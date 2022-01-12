@@ -189,8 +189,14 @@ Use the getAverageWordLength function below to do the following:
   For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-  /*code here*/
+function getAverageWordLength(array){
+  let totalNumWords = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    totalNumWords += array[i].split(" ").length;
+  }
+
+  return totalNumWords / array.length;
 }
 
 
@@ -207,8 +213,23 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-  /*code here*/
+function getRandomFlavors(arrayOne, arrayTwo, arrayThree, arrayFour){
+  const allFlavors = [...arrayOne, ...arrayTwo, ...arrayThree, ...arrayFour];
+  const randomFlavors = [];
+  let randomIndex;
+
+  for (let i = 0; i < 31; i++) {
+    // find a random index in all flavors based on array length
+    randomIndex = Math.floor(Math.random() * allFlavors.length);
+
+    // add the flavor to the random flavors array from all flavors
+    randomFlavors.push(allFlavors[randomIndex]);
+
+    // remove the flavor from the all flavors array to avoid duplicates
+    allFlavors.splice(randomIndex, 1);
+  }
+
+  return randomFlavors;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
